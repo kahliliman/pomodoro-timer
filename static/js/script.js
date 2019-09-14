@@ -1,123 +1,75 @@
 console.log('CONNECTED')
 
-// var fiveMinutes = 10
 var isCounting = false
-// var timeLeft = 10;
-// var timerDisplay = document.querySelector('#timerDisplay');
-// var pomButton = document.querySelector('#pomButton');
+var timerDisplay = document.querySelector('#timerDisplay');
 
-// $('#pomButton').click(function() {
-//     isCounting = true
-//     startTimer(fiveMinutes, timerDisplay);
-    
-//     function startTimer(duration, display) {
-//         var timer = duration, minutes, seconds;
-//         setInterval(function () {
-//             minutes = parseInt(timer / 60, 10);
-//             seconds = parseInt(timer % 60, 10);
-            
-//             minutes = minutes < 10 ? "0" + minutes : minutes;
-//             seconds = seconds < 10 ? "0" + seconds : seconds;
-            
-//             display.textContent = minutes + ":" + seconds;
-            
-//             console.log(seconds);
-    
-//             if (--timer < 0) {
-//                 clearTimeout(timer);
-//                 isCounting = false;
-//             }
-//         }, 1000);
-//     }
-// });
-    
-
-// $('#pomButton').click(function() {
-//     isCounting = true
-//     var timerId = setInterval(countdown, 1000);
-
-//     function countdown() {
-//         if (timeLeft == -1) {
-//           clearTimeout(timerId);
-//           isCounting = false;
-//         } else {
-//           timerDisplay.innerHTML = timeLeft;
-//           timeLeft--;
-//         }
-//     }
-// });
-    
-    
-
-
-
-// startTimer(fiveMinutes, timerDisplay);
-
-
-// function startTimer(duration, display) {
-//     var timer = duration, minutes, seconds;
-//     setInterval(function () {
-//         minutes = parseInt(timer / 60, 10);
-//         seconds = parseInt(timer % 60, 10);
-        
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-        
-//         display.textContent = minutes + ":" + seconds;
-        
-//         console.log(seconds);
-
-//         if (--timer < 0) {
-//             timer = duration;
-//         }
-//     }, 1000);
-// }
-
-
-var pomTime = 10
+// in minutes
+var pomTime = 2
 
 $('#pomButton').click(function(){
     $("#pauseButton").removeClass( "hidden" );
-    $("#stopButton").removeClass( "hidden" );
-    $("#resButton").addClass( "hidden" );
+    $("#resetButton").removeClass( "hidden" );
+    $("#breakButton").addClass( "hidden" );
     $("#pomButton").addClass( "hidden" );
 
     isCounting = true; 
-    count = pomTime;
+    count = pomTime*60;
     timeID = setInterval(countdown, 1000);
     
     function countdown(){
         if (count >0){
             count = count-1
-            timerDisplay.innerHTML = count;
+            minutes = parseInt(count / 60, 10);
+            seconds = parseInt(count % 60, 10);
+            
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerDisplay.innerHTML = minutes + ":" + seconds;
             console.log(count);
         } 
         else {
             clearTimeout(timeID);
             isCounting = false;
             $("#pauseButton").addClass( "hidden" );
-            $("#stopButton").addClass( "hidden" );
-            $("#resButton").removeClass( "hidden" );
+            $("#resetButton").addClass( "hidden" );
+            $("#breakButton").removeClass( "hidden" );
             $("#pomButton").removeClass( "hidden" );
         }
     }
 });
 
 
-
-// $("#pomButton").removeClass( "hidden" );
-// $("#resButton").removeClass( "hidden" );
-// $("#stopButton").addClass( "hidden" );
-// $("#pauseButton").addClass( "hidden" );
-
-// $("#stopButton").removeClass( "hidden" );
-// $("#pauseButton").removeClass( "hidden" );
-// $("#pomButton").addClass( "hidden" );
-// $("#resButton").addClass( "hidden" );
-
-$('#resButton').click(function(){
+$('#pauseButton').click(function(){
+    if (isCounting==true) {
+        clearTimeout(timeID);
+        $(this).text("continue");
+        isCounting=false;
+    }
+    else if (isCounting==false) {
+        $(this).text("pause");
+        isCounting=true;
+        timeID = setInterval(countdown, 1000);
+        function countdown(){
+            if (count >0){
+                count = count-1
+                minutes = parseInt(count / 60, 10);
+                seconds = parseInt(count % 60, 10);
+                
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
     
+                timerDisplay.innerHTML = minutes + ":" + seconds;
+                console.log(count);
+            } 
+            else {
+                clearTimeout(timeID);
+                isCounting = false;
+                $("#pauseButton").addClass( "hidden" );
+                $("#resetButton").addClass( "hidden" );
+                $("#breakButton").removeClass( "hidden" );
+                $("#pomButton").removeClass( "hidden" );
+            }
+        }
+    }
 });
-
-
-
