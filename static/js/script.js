@@ -1,11 +1,30 @@
-function countdown(n) {
-    while (n>=0) {
-        console.log(n)
-        n = n-1
-    }
+console.log('CONNECTED')
+
+var fiveMinutes = 10
+var timerDisplay = document.querySelector('#timerDisplay');
+var isCounting = false
+
+
+
+$('#pomButton').click(function() {
+    startTimer(fiveMinutes, timerDisplay);
+});
+
+
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        
+        display.textContent = minutes + ":" + seconds;
+        
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
-
-pomTimer = 25
-resTimer = 5
-
-countdown(pomTimer)
