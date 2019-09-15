@@ -4,7 +4,10 @@ var isCounting = false
 var timerDisplay = document.querySelector('#timerDisplay');
 
 // in minutes
-var pomTime = 2
+var pomTime = 10
+
+timerDisplay.innerHTML = pomTime < 10 ? "0" + pomTime + ":00" : pomTime + ":00";
+
 
 $('#pomButton').click(function(){
     $("#pauseButton").removeClass( "hidden" );
