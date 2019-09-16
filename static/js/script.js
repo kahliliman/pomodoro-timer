@@ -14,13 +14,12 @@ $('#pomButton').click(function(){
     $("#resetButton").removeClass( "hidden" );
     $("#breakButton").addClass( "hidden" );
     $("#pomButton").addClass( "hidden" );
-
     isCounting = true; 
     count = pomTime*60;
     timeID = setInterval(countdown, 1000);
     
     function countdown(){
-        if (count >0){
+        if (count >0){ 
             count = count-1
             minutes = parseInt(count / 60, 10);
             seconds = parseInt(count % 60, 10);
@@ -76,3 +75,7 @@ $('#pauseButton').click(function(){
         }
     }
 });
+
+
+
+
