@@ -5,10 +5,11 @@
   margin: 0;
   box-sizing: inherit; }
 
-  body {
-    box-sizing: border-box; }
+body {
+	box-sizing: border-box; 
+}
   
-  body {
+body {
     font-family: 'Gotham Pro', sans-serif;
     font-weight: 400;
     color: #777; 
@@ -17,25 +18,13 @@
     flex-direction: column;
 }
 
-.header {
-    height:40px;
-    background-color: #fff; 
-    padding-bottom: 8   0px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.footer {
-    height:40px;
-    background-color: #E8EDF5; 
-}
-
 .card {
     background-color: #fff;
     border-radius: 4px;
     height: 500px;
     width: 540px;
     margin: auto;
+    margin-top: 80px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -51,16 +40,15 @@
     flex: 
 }
 
-#timerDisplay {
+.timer-display {
     font-size: 120px;
     font-weight: 400;
     color: #000;
     margin-bottom: 40px;
 }
 
-
 .hidden {
-    display: none;
+	display: none;
 }
 
 .primary-btn {
