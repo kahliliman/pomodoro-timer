@@ -10,16 +10,21 @@
 
 <div class="card">
   <h1 class="card-title">pomodoro timer</h1>
-  
-  <p id="timerDisplay">25:00</p>
-  
-  <div class="buttonRow">
-      <a href='#' id="pomButton" class="primary-btn" >start focus</a>
-      <a href='#' id="breakButton" class="secondary-btn">break</a>
-      <a href='#' id="pauseButton" class="secondary-btn hidden">pause</a> 
-      <a href='#' id="resetButton" class="secondary-btn hidden">reset</a>
-  </div>      
 
+<!-- 		<div class="display">
+  
+</div> -->
+
+<div class="timer-display">
+  <span class="min-display"></span>:<span class="sec-display"></span>
+</div>
+
+  <div class="buttonRow">
+  <a href="#" class="primary-btn btn-start"></a>
+  <a href="#" class="secondary-btn btn-pause hidden"></a>
+  <a href="#" class="primary-btn btn-resume hidden"></a>
+  <a href="#" class="secondary-btn btn-reset hidden"></a>
+  </div>      
 </div>
     
 {% endblock %}
